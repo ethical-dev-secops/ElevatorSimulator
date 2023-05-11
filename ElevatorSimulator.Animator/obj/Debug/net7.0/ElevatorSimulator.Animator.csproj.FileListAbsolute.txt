@@ -1,0 +1,15 @@
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.csproj.AssemblyReference.cache
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.AssemblyInfoInputs.cache
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.AssemblyInfo.cs
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.csproj.CoreCompileInputs.cache
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\bin\Debug\net7.0\ElevatorSimulator.Animator.deps.json
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\bin\Debug\net7.0\ElevatorSimulator.Animator.dll
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\bin\Debug\net7.0\ElevatorSimulator.Animator.pdb
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\bin\Debug\net7.0\ElevatorSimulator.Domain.dll
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\bin\Debug\net7.0\ElevatorSimulator.Domain.pdb
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.csproj.CopyComplete
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.dll
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\refint\ElevatorSimulator.Animator.dll
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ElevatorSimulator.Animator.pdb
+C:\Users\demia\source\repos\ElevatorSimulator\ElevatorSimulator.Animator\obj\Debug\net7.0\ref\ElevatorSimulator.Animator.dll
