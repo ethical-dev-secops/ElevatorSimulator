@@ -156,7 +156,7 @@ namespace ElevatorSimulator.Animator
             
             foreach (var elevator in gameWorld.Elevators)
             {
-                worldAsBitmap[elevator.XPosition, elevator.YPosition] = colorCoordinator.GetColor(elevator);
+                worldAsBitmap[elevator.XPosition, elevator.CurrentFloorNumber] = colorCoordinator.GetColor(elevator);
             }
 
             foreach (var request in gameWorld.Requests)
@@ -166,7 +166,7 @@ namespace ElevatorSimulator.Animator
 
             foreach (var floor in gameWorld.Floors.Where(x => x.People.Count() > 0))
             {
-                worldAsBitmap[GameConfiguration.Elevator1XIndex - 2, floor.FloorNumber] = new CanvasMap()
+                 worldAsBitmap[GameConfiguration.Elevator1XIndex - 2, floor.FloorNumber] = new CanvasMap()
                 {
                     Color = colorCoordinator.GetColor(floor.People.First()),
                     Value = floor.People.Count()

@@ -41,7 +41,7 @@ namespace ElevatorSimulator.Domain.WorldMechanics
             gameWorld = GameWorldUtilities.MovePeople(gameWorld);
             gameWorld = GameWorldUtilities.ProcessRequest(gameWorld);
             gameWorld = GameWorldUtilities.ProcessCursor(gameWorld);
-            gameWorld = GameWorldUtilities.ProcessElevatorMovements(gameWorld);
+            gameWorld = GameWorldUtilities.ProcessElevatorRequests(gameWorld);
         }
 
         public GameWorld GetGameWorld()

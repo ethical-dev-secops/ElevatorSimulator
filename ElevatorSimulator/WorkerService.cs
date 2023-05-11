@@ -36,13 +36,21 @@ namespace ElevatorSimulator.ConsoleApplication
 
             var mainThread = new System.Timers.Timer(300);
             mainThread.Enabled = true;
+            var threadInUse = false; ;
 
             void RenderSimulationThread(Object source, ElapsedEventArgs e)
             {
+                if(threadInUse)
+                {
+                    return;
+                }
+                threadInUse = true;
                 Console.Clear();
 
                 simulator.CalculateLogicForNextFrame();
                 renderer.RenderScreen(simulator.GetGameWorld());
+
+                threadInUse = false;
             }
 
             RenderSimulationThread(null, null);

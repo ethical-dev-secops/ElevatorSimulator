@@ -19,11 +19,17 @@ namespace ElevatorSimulator.Domain.Utils
         /// <returns></returns>
         public static GameWorld MovePeople(GameWorld gameWorld)
         {
-            foreach (var lift in gameWorld.Elevators)
+            for(var i = 0; i < gameWorld.Elevators.Count; i++ )
             {
-                var peopleGettingOut = lift.PeopleGettingOutAtThisFloor();
+                var floorNumber = gameWorld.Elevators[i].CurrentFloorNumber;
 
-                gameWorld.Floors[lift.CurrentFloorNumber].AddPeople(peopleGettingOut);
+                var peopleGettingOut = gameWorld.Elevators[i].PeopleGettingOutAtThisFloor();
+                gameWorld.Floors[floorNumber].AddPeople(peopleGettingOut);
+                peopleGettingOut.ForEach(x=> gameWorld.Elevators[i].People.Remove(x));
+
+                var peopleGettingIn = gameWorld.Floors[floorNumber].People;
+                gameWorld.Elevators[i].People.AddRange(peopleGettingIn);
+                gameWorld.Floors[floorNumber].People.Clear();
             }
 
             return gameWorld;
@@ -40,10 +46,24 @@ namespace ElevatorSimulator.Domain.Utils
             {
                 if (gameWorld.Elevators[i].Direction == Direction.Up)
                 {
+                    if(gameWorld.Elevators[i].CurrentFloorNumber == gameWorld.Floors.Count-1)
+                    {
+                        gameWorld.Elevators[i].Direction = Direction.Down;
+                        gameWorld.Elevators[i].CurrentDestinationFloor = 0;
+                        continue;
+                    }
+
                     gameWorld.Elevators[i].CurrentFloorNumber++;
                 }
                 else if (gameWorld.Elevators[i].Direction == Direction.Down)
                 {
+                    if (gameWorld.Elevators[i].CurrentFloorNumber == 0)
+                    {
+                        gameWorld.Elevators[i].Direction = Direction.Up;
+                        gameWorld.Elevators[i].CurrentDestinationFloor = gameWorld.Floors.Count / 2;
+                        continue;
+                    }
+
                     gameWorld.Elevators[i].CurrentFloorNumber--;
                 }
             }
@@ -99,7 +119,7 @@ namespace ElevatorSimulator.Domain.Utils
         /// </summary>
         /// <param name="gameWorld"></param>
         /// <returns></returns>
-        public static GameWorld ProcessElevatorMovements(GameWorld gameWorld)
+        public static GameWorld ProcessElevatorRequests(GameWorld gameWorld)
         {
             var floorsWithPeople = gameWorld.Floors.Where(x => x.People.Count > 0);
 
@@ -107,11 +127,19 @@ namespace ElevatorSimulator.Domain.Utils
             {
                 var thisElevator = gameWorld.Elevators[i];
 
+                if(thisElevator.BlockNewInstructionsForHowManyIterations > 0)
+                {
+                    thisElevator.BlockNewInstructionsForHowManyIterations--;
+                    continue;
+                }
+
                 if (thisElevator.Direction == Direction.None || thisElevator.Direction == Direction.Up)
                 {
                     if(floorsWithPeople.Any())
                     {
+                        gameWorld.Elevators[i].BlockNewInstructionsForHowManyIterations = 4;
                         thisElevator.CurrentDestinationFloor = floorsWithPeople.Max(x => x.FloorNumber);
+                        thisElevator.Direction = Direction.Up;
                     }
                 }
 
@@ -119,7 +147,9 @@ namespace ElevatorSimulator.Domain.Utils
                 {
                     if (floorsWithPeople.Any())
                     {
+                        gameWorld.Elevators[i].BlockNewInstructionsForHowManyIterations = 4;
                         thisElevator.CurrentDestinationFloor = floorsWithPeople.Min(x => x.FloorNumber);
+                        thisElevator.Direction = Direction.Down;
                     }
                 }
             }

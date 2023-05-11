@@ -38,6 +38,12 @@ namespace ElevatorSimulator.Domain.DomainModels
         /// </summary>
         public Direction Direction { get; set; }
 
+
+        /// <summary>
+        /// Signals that the elevator is busy
+        /// </summary>
+        public int BlockNewInstructionsForHowManyIterations { get; set; }
+
         #endregion
 
         #region Constructor
