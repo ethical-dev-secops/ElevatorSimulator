@@ -15,12 +15,17 @@ namespace ElevatorSimulator.Domain.DomainModels
 
         #region Constructor
 
+        /// <summary>
+        /// Randomly generates stats for a Person
+        /// </summary>
         public Person()
         {
             ID = Guid.NewGuid();
+
             var numberGenerator = new Random();
 
             HeadingToFloorNumber = numberGenerator.Next(1, 9);
+            Weight = numberGenerator.Next(20, 120);
         }
 
         #endregion
