@@ -44,6 +44,13 @@ namespace ElevatorSimulator.Domain.Utils
         {
             for (var i = 0; i < gameWorld.Elevators.Count(); i++)
             {
+                if (gameWorld.Elevators[i].People.Count == 0 && gameWorld.Floors.All(x=>x.People.Count == 0))
+                {
+                    gameWorld.Elevators[i].Direction = Direction.None;
+                    gameWorld.Elevators[i].CurrentDestinationFloor = gameWorld.Elevators[i].CurrentFloorNumber;
+                    continue;
+                }
+
                 if (gameWorld.Elevators[i].Direction == Direction.Up)
                 {
                     if(gameWorld.Elevators[i].CurrentFloorNumber == gameWorld.Floors.Count-1)
