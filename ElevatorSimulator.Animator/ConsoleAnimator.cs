@@ -115,7 +115,7 @@ namespace ElevatorSimulator.Animator
             Console.ForegroundColor = ConsoleColor.White;
             Console.CursorLeft = GameConfiguration.Elevator1XIndex;
             Console.CursorTop = this.SizeY - y;
-            Console.Write("║ ║");
+            Console.Write("║ ║"+$"[{y}]");
         }
 
         /// <summary>

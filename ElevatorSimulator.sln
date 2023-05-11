@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSimulator.ConsoleApplication", "ElevatorSimulator\ElevatorSimulator.ConsoleApplication.csproj", "{02600585-B3DA-4DC8-8CAB-59E4969956FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorSimulator.ConsoleApplication", "ElevatorSimulator\ElevatorSimulator.ConsoleApplication.csproj", "{02600585-B3DA-4DC8-8CAB-59E4969956FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSimulator.Domain", "ElevatorSimulator.Domain\ElevatorSimulator.Domain.csproj", "{569C783D-30BF-460C-AAE6-CB413DDE6399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorSimulator.Domain", "ElevatorSimulator.Domain\ElevatorSimulator.Domain.csproj", "{569C783D-30BF-460C-AAE6-CB413DDE6399}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSimulator.Animator", "ElevatorSimulator.Animator\ElevatorSimulator.Animator.csproj", "{A749F7AC-A98E-4296-873C-FC62EF703853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorSimulator.Animator", "ElevatorSimulator.Animator\ElevatorSimulator.Animator.csproj", "{A749F7AC-A98E-4296-873C-FC62EF703853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSimulator.UnitTests", "ElevatorSimulator.UnitTests\ElevatorSimulator.UnitTests.csproj", "{8BC6A36C-1E4C-4347-9B36-C5B19B276FEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A749F7AC-A98E-4296-873C-FC62EF703853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A749F7AC-A98E-4296-873C-FC62EF703853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A749F7AC-A98E-4296-873C-FC62EF703853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BC6A36C-1E4C-4347-9B36-C5B19B276FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BC6A36C-1E4C-4347-9B36-C5B19B276FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BC6A36C-1E4C-4347-9B36-C5B19B276FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BC6A36C-1E4C-4347-9B36-C5B19B276FEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

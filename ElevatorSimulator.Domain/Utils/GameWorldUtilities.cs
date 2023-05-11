@@ -10,7 +10,7 @@ using ElevatorSimulator.Domain.WorldMechanics;
 
 namespace ElevatorSimulator.Domain.Utils
 {
-    internal class GameWorldUtilities
+    public class GameWorldUtilities
     {
         /// <summary>
         /// Loads people into and out of the elevators.
@@ -162,6 +162,16 @@ namespace ElevatorSimulator.Domain.Utils
             }
 
             return gameWorld;
+        }
+
+        public static bool IsElevatorOverloaded(Elevator elevator)
+        {
+            if(elevator.People.Sum(x => x.Weight) > elevator.MaxWeightOccupancy)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
