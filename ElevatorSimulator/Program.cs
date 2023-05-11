@@ -12,7 +12,7 @@ namespace ElevatorSimulator.ConsoleApplication
         public static void Main(string[] args)
         {
 
-            Console.WindowWidth = 40;
+            Console.WindowWidth = 65;
             Console.WindowHeight = 30;
 
             Console.BufferHeight = Console.LargestWindowHeight;

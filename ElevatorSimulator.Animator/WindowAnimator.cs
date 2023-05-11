@@ -7,6 +7,10 @@ using System.Drawing;
 
 namespace ElevatorSimulator.Animator
 {
+    /// <summary>
+    /// Home to a Windows Forms renderer
+    /// Not yet implemented.
+    /// </summary>
     public class WindowAnimator : AbstractAnimator, IAnimator
     {
         #region Properties

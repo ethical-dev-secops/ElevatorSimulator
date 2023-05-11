@@ -18,7 +18,8 @@ namespace ElevatorSimulator.Domain.DomainModels
         /// <summary>
         /// Randomly generates stats for a Person
         /// </summary>
-        public Person()
+        /// <param name="floorNumber">Current floor number to spawn on</param>
+        public Person(int floorNumber)
         {
             ID = Guid.NewGuid();
 
@@ -26,6 +27,7 @@ namespace ElevatorSimulator.Domain.DomainModels
 
             HeadingToFloorNumber = numberGenerator.Next(1, 9);
             Weight = numberGenerator.Next(20, 120);
+            CurrentFloorNumber = floorNumber;
         }
 
         #endregion

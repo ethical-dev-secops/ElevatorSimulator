@@ -35,9 +35,9 @@ namespace ElevatorSimulator.Animator.Presentation
             return new CanvasMap() { Color = ConsoleColor.White, Value = weight };
         }
 
-        public CanvasMap GetColor(Person person)
+        public ConsoleColor GetColor(Person person)
         {
-            return new CanvasMap() { Color = ConsoleColor.Yellow};
+            return ConsoleColor.Yellow;
         }
 
         public CanvasMap GetColor(Request request)

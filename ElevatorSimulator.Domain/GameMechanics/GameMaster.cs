@@ -33,7 +33,7 @@ namespace ElevatorSimulator.Domain.WorldMechanics
         }
 
         /// <summary>
-        /// Main executable for the game thread.
+        /// Main executable logic for the game thread.
         /// </summary>
         public void CalculateLogicForNextFrame()
         {
@@ -41,6 +41,7 @@ namespace ElevatorSimulator.Domain.WorldMechanics
             gameWorld = GameWorldUtilities.MovePeople(gameWorld);
             gameWorld = GameWorldUtilities.ProcessRequest(gameWorld);
             gameWorld = GameWorldUtilities.ProcessCursor(gameWorld);
+            gameWorld = GameWorldUtilities.ProcessElevatorMovements(gameWorld);
         }
 
         public GameWorld GetGameWorld()
@@ -100,7 +101,7 @@ namespace ElevatorSimulator.Domain.WorldMechanics
         /// <returns></returns>
         public void AddNewPersonToFloor()
         {
-            gameWorld.Floors[gameWorld.Cursor.YIndex].AddPerson(new Person());
+            gameWorld.Floors[gameWorld.Cursor.YIndex].AddPerson(new Person(gameWorld.Cursor.YIndex));
         }
     }
 }

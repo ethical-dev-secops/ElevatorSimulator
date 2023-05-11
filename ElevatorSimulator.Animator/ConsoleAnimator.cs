@@ -4,9 +4,18 @@ using ElevatorSimulator.Animator.Parameters;
 using ElevatorSimulator.Animator.Presentation;
 using ElevatorSimulator.Domain.WorldMechanics;
 using System.Drawing;
+using System.Reflection.Emit;
 
 namespace ElevatorSimulator.Animator
 {
+    /// <summary>
+    /// Draws the Console interface.
+    /// </summary>
+    /// 
+    /// <remarks>
+    /// Refreshes the screen on a Timer Thread (ie: no Console.Read())
+    /// </remarks>
+    /// 
     public class ConsoleAnimator : AbstractAnimator, IAnimator
     {
         #region Properties
@@ -30,6 +39,10 @@ namespace ElevatorSimulator.Animator
 
         #region Methods
 
+        /// <summary>
+        /// Main Draw to screen method
+        /// </summary>
+        /// <param name="gameWorld"></param>
         public void RenderScreen(GameWorld gameWorld)
         {
             var bitmap = DrawScreenInMemoryBuffer(gameWorld);
@@ -42,7 +55,7 @@ namespace ElevatorSimulator.Animator
         #region Private Methods
 
         /// <summary>
-        /// Primary method for displaying the UI
+        /// Primary method for displaying the UI. Just prints out the pre-decided bitmap.
         /// </summary>
         /// <param name="map"></param>
         private void DrawScreen(CanvasMap[,] map)
@@ -65,22 +78,32 @@ namespace ElevatorSimulator.Animator
                         Console.CursorLeft = x;
                         Console.CursorTop = this.SizeY - y;
                         Console.Write('\u2588');
-                        if (map[x, y].Value != 0)
-                        {
-                            Console.Write(map[x, y].Value);
-                            Console.Write('\u0166');
-                        }
+
+                        ProcessLabel(map[x, y].Value);
                     }
                 }
             }
 
-
-
-
-
-
-
             CreateInstructions();
+        }
+
+        /// <summary>
+        /// Used to label the amount of people
+        /// </summary>
+        /// <param name="label"></param>
+        private static void ProcessLabel(double label)
+        {
+            if (label != 0)
+            {
+                if (label > 9)
+                {
+                    Console.Write(9);
+                }
+                else
+                {
+                    Console.Write(label);
+                }
+            }
         }
 
         /// <summary>
@@ -122,18 +145,32 @@ namespace ElevatorSimulator.Animator
             Console.WriteLine($"╚═══════════════════════╝   ╚═══════════════════════════════════╝");
         }
 
+        /// <summary>
+        /// Creates a virtual UI in Memory.
+        /// </summary>
+        /// <param name="gameWorld"></param>
+        /// <returns></returns>
         private CanvasMap[,] DrawScreenInMemoryBuffer(GameWorld gameWorld)
         {
             CanvasMap[,] worldAsBitmap = new CanvasMap[SizeX+10,SizeY];
             
-            foreach (var item in gameWorld.Elevators)
+            foreach (var elevator in gameWorld.Elevators)
             {
-                worldAsBitmap[item.XPosition, item.YPosition] = colorCoordinator.GetColor(item);
+                worldAsBitmap[elevator.XPosition, elevator.YPosition] = colorCoordinator.GetColor(elevator);
             }
 
-            foreach (var item in gameWorld.Requests)
+            foreach (var request in gameWorld.Requests)
             {
-                worldAsBitmap[item.XPosition, item.YPosition] = colorCoordinator.GetColor(item);
+                worldAsBitmap[request.XPosition, request.YPosition] = colorCoordinator.GetColor(request);
+            }
+
+            foreach (var floor in gameWorld.Floors.Where(x => x.People.Count() > 0))
+            {
+                worldAsBitmap[GameConfiguration.Elevator1XIndex - 2, floor.FloorNumber] = new CanvasMap()
+                {
+                    Color = colorCoordinator.GetColor(floor.People.First()),
+                    Value = floor.People.Count()
+                };
             }
 
             worldAsBitmap[1, gameWorld.Cursor.YIndex] = colorCoordinator.GetColor(gameWorld.Cursor);

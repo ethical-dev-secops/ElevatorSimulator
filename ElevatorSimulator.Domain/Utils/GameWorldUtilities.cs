@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,6 +89,39 @@ namespace ElevatorSimulator.Domain.Utils
             else
             {
                 gameWorld.Cursor.CursorState++;
+            }
+
+            return gameWorld;
+        }
+
+        /// <summary>
+        /// Deals with floor co-ordination
+        /// </summary>
+        /// <param name="gameWorld"></param>
+        /// <returns></returns>
+        public static GameWorld ProcessElevatorMovements(GameWorld gameWorld)
+        {
+            var floorsWithPeople = gameWorld.Floors.Where(x => x.People.Count > 0);
+
+            for(var i = 0; i < gameWorld.Elevators.Count; i++)
+            {
+                var thisElevator = gameWorld.Elevators[i];
+
+                if (thisElevator.Direction == Direction.None || thisElevator.Direction == Direction.Up)
+                {
+                    if(floorsWithPeople.Any())
+                    {
+                        thisElevator.CurrentDestinationFloor = floorsWithPeople.Max(x => x.FloorNumber);
+                    }
+                }
+
+                if (thisElevator.Direction == Direction.Down)
+                {
+                    if (floorsWithPeople.Any())
+                    {
+                        thisElevator.CurrentDestinationFloor = floorsWithPeople.Min(x => x.FloorNumber);
+                    }
+                }
             }
 
             return gameWorld;

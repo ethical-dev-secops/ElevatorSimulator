@@ -11,6 +11,10 @@ namespace ElevatorSimulator.Domain.DomainModels
 
         public int YIndex { get; set; }
         public int XIndex { get; set; }
+
+        /// <summary>
+        /// Do not want to throw a BufferOverflow Exception if the y-value exceeds this maximum value.
+        /// </summary>
         public int MaxYIndex { get; set; }
         public CursorState CursorState { get; set; }
 

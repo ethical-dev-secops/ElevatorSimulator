@@ -1,4 +1,5 @@
 ﻿using ElevatorSimulator.Animator;
+using ElevatorSimulator.Animator.Factory;
 using ElevatorSimulator.Domain.WorldMechanics;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -91,9 +92,11 @@ namespace ElevatorSimulator.ConsoleApplication
 
         private static ConsoleAnimator GetRenderer()
         {
-            return new ConsoleAnimator(new Animator.Parameters.AnimatorArguments()
+            var factory = new AnimatorFactory();
+
+            return (ConsoleAnimator) factory.CreateAnimator(new Animator.Parameters.AnimatorArguments()
             {
-                X = 24,
+                X = 30,
                 Y = 10,
                 ColorCoordinator = new Animator.Presentation.ColorCoordinator()
             });
@@ -104,7 +107,7 @@ namespace ElevatorSimulator.ConsoleApplication
             return new GameMaster(new GameConfiguration()
             {
                 NumberOfElevators = 2,
-                NumberOfFloors = 7,
+                NumberOfFloors = 10,
                 MaxHeight = 10
             });
         }

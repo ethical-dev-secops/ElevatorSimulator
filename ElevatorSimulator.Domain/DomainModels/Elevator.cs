@@ -4,6 +4,10 @@ using System.Drawing;
 
 namespace ElevatorSimulator.Domain.DomainModels
 {
+    /// <summary>
+    /// Represents a drawable elevator compartment, that may contain people.
+    /// It is traversing to a particular floor.
+    /// </summary>
     public class Elevator : DrawableObject
     {
         #region Properties

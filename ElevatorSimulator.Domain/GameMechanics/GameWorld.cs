@@ -40,7 +40,7 @@ namespace ElevatorSimulator.Domain.WorldMechanics
             Floors = new List<Floor>();
             for (var i = 0; i < configuration.NumberOfFloors; i++)
             {
-                Floors.Add(new Floor());
+                Floors.Add(new Floor() { FloorNumber = i });
             }
         }
 
@@ -55,11 +55,11 @@ namespace ElevatorSimulator.Domain.WorldMechanics
             {
                 if (i == 0)
                 {
-                    Elevators.Add(new Elevator() { XPosition = GameConfiguration.Elevator1XIndex });
+                    Elevators.Add(new Elevator() { XPosition = GameConfiguration.Elevator1XIndex + 1 });
                 }
                 else if (i == 1)
                 {
-                    Elevators.Add(new Elevator() { XPosition = GameConfiguration.Elevator2XIndex });
+                    Elevators.Add(new Elevator() { XPosition = GameConfiguration.Elevator2XIndex + 1 });
                 }
             }
         }
